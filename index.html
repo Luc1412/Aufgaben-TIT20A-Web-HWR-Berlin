@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="stylesheet" href="styles/styles.css" />
+    <title>Rituale</title>
+  </head>
+
+  <body>
+    <nav id="nav">
+      <span><a href="#def">Definition</a></span>
+      <span><a href="#bsp">Beispiele</a></span>
+      <span><a href="#buch">Buchung</a></span>
+    </nav>
+
+    <div>
+      <h1>Rituale</h1>
+      <div id="def">
+        <h2>Definition</h2>
+        <p>
+          Ein <b>Ritual</b>
+          <i>(von lateinisch ritualis ‚den Ritus betreffend‘, rituell)</i> ist
+          eine nach vorgegebenen Regeln ablaufende, meist formelle und oft
+          feierlich-festliche Handlung mit hohem Symbolgehalt. Sie wird häufig
+          von bestimmten Wortformeln und festgelegten Gesten begleitet und kann
+          religiöser oder weltlicher Art sein (z. B. Gottesdienst, Begrüßung,
+          Hochzeit, Begräbnis, Aufnahmefeier usw.). Ein festgelegtes Zeremoniell
+          (Ordnung) von Ritualen oder rituellen Handlungen bezeichnet man als
+          Ritus. Manche Rituale gelten als Kulturgut.
+        </p>
+      </div>
+    </div>
+
+    <div id="bsp">
+      <div>
+        <section>
+          <h2>Beispiele</h2>
+          <h3>Herkünfte</h3>
+          <ul>
+            <li>Islam und arabische Gebiete</li>
+            <li>Stammkulturen Lateinamerikas</li>
+            <ol>
+              <li>México</li>
+              <li>Perú</li>
+              <li>Brasil</li>
+            </ol>
+            <li>Christliche</li>
+          </ul>
+        </section>
+      </div>
+      <div>
+        <h3>Rituale</h3>
+        <table border="1">
+          <tr>
+            <th>Ritual</th>
+            <th>Herkunft</th>
+            <th>Zweck</th>
+            <th>Gegenstände</th>
+            <th>Merkmale</th>
+          </tr>
+          <tr>
+            <td><a href="./Rituale/Fasten.html">Fasten</a></td>
+            <td>Islam</td>
+            <td>Seele reinigen, Beziehungen festigen</td>
+            <td></td>
+            <td>
+              im Monat Ramadan sündenfrei leben und von Sonnenauf- bis untergang
+              auf Nahrung verzichten
+            </td>
+          </tr>
+          <tr>
+            <td><a href="./Rituale/LaHuaconada.html">"La Huaconada"</a></td>
+            <td>Junín, Perú</td>
+            <td>dem Gott Kon angeboten</td>
+            <td>Peitsche und Maske</td>
+            <td>Nur von Männer getanzt</td>
+          </tr>
+          <tr>
+            <td><a href="./Rituale/Taufe.html">Taufe</a></td>
+            <td>Christentum</td>
+            <td>Eingliederung in die Gemeinschaft</td>
+            <td>Wasser</td>
+            <td>Sprechen einer Taufformel</td>
+          </tr>
+        </table>
+      </div>
+    </div>
+
+    <div id="buch">
+      <h2>Buche dein eigenes online Ritual</h2>
+      <p>
+        Buch ein <b>einzigartiges online Erlebnis</b> mit einem Einheimischen,
+        der dir eines der Rituale näher bringt.
+      </p>
+      <div>
+        <table>
+          <tr>
+            <th>Ritual</th>
+            <th>Länge</th>
+            <th>Preis</th>
+          </tr>
+          <tr>
+            <td>Fasten</td>
+            <td>2h</td>
+            <td>23€</td>
+          </tr>
+          <tr>
+            <td>"La Huaconada"</td>
+            <td>1h 30min</td>
+            <td>15€</td>
+          </tr>
+          <tr>
+            <td>Taufe</td>
+            <td>1h</td>
+            <td>10€</td>
+          </tr>
+        </table>
+      </div>
+      <form>
+        <table>
+          <tr>
+            <td>
+              <label for="name">Name:</label>
+            </td>
+            <td>
+              <input type="text" name="name" id="name" />
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <label for="name">E-Mail Adresse:</label>
+            </td>
+            <td>
+              <input type="email" name="email" id="email" />
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <label for="gender">Geschlecht:</label>
+            </td>
+            <td>
+              <input
+                type="radio"
+                name="gender"
+                id="gender"
+                value="mänlich"
+              />mänlich
+              <input
+                type="radio"
+                name="gender"
+                id="gender"
+                value="weiblich"
+              />weiblich
+              <input
+                type="radio"
+                name="gender"
+                id="gender"
+                value="divers"
+              />divers
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <label for="time">Tag des Rituals:</label>
+            </td>
+            <td>
+              <input type="datetime-local" name="time" />
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <label for="ritual">Ritual:</label>
+            </td>
+            <td>
+              <select name="ritual" id="ritual">
+                <option>Fasten</option>
+                <option>"La Huaconada"</option>
+                <option>Taufe</option>
+              </select>
+            </td>
+          </tr>
+        </table>
+        <br />
+        <input
+          type="submit"
+          value="Jetzt kostenpflichtig Buchen"
+          onclick="alert('Credit Card Information received')"
+        />
+      </form>
+    </div>
+
+    <footer>
+      <span><a href="#nav">Back to top</a></span>
+      <span><a href="others/Impressum.html">Impressum</a></span>
+      <span><a href="#">Datenschutzerklärung</a></span>
+    </footer>
+  </body>
+</html>
