@@ -1,24 +1,16 @@
 {
-  "name": "aufgabe-1-abgabe",
+  "name": "aufgabe-3",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.html",
+  "description": "Beste Lösung der Aufgabe ever.",
+  "main": "src/index.js",
   "scripts": {
-    "start": "serve",
-    "build": "echo This is a static template, there is no bundler or bundling involved!"
+    "start": "nodemon src/index.js"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/codesandbox-app/static-template.git"
+  "dependencies": {
+    "express": "4.17.2"
   },
-  "keywords": [],
-  "author": "Ives van Hoorne",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/codesandbox-app/static-template/issues"
-  },
-  "homepage": "https://github.com/codesandbox-app/static-template#readme",
   "devDependencies": {
-    "serve": "^11.2.0"
-  }
+    "nodemon": "1.18.4"
+  },
+  "keywords": []
 }

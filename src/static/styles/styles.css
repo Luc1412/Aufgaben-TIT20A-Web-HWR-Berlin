@@ -1,0 +1,53 @@
+nav,
+footer {
+  display: flex;
+  justify-content: flex-start;
+  align-items: stretch;
+  flex-wrap: wrap;
+  border: solid 2px blue;
+  border-radius: 100px;
+  background-color: lightblue;
+}
+
+nav > span,
+footer > span {
+  margin-left: 15px;
+  background-color: lightblue;
+  height: 100%;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+nav a {
+  color: black;
+  height: 100%;
+}
+
+nav > span:hover {
+  background-color: blue;
+}
+
+nav a:hover {
+  color: white;
+}
+
+.header {
+  background-color: red;
+  grid-column-start: 1;
+  grid-column-end: 4;
+}
+
+#buch {
+  display: grid;
+  grid-template-columns: auto auto;
+  grid-template-rows: min-content min-content;
+}
+
+#buch * {
+  grid-column: span 1;
+}
+
+#buch > h2,
+#buch > p {
+  grid-column: span 2;
+}

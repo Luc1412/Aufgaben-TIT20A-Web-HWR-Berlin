@@ -1,0 +1,14 @@
+body {
+  display: grid;
+  grid-template-columns: auto auto;
+  grid-template-rows: min-content min-content min-content min-content;
+  grid-gap: 10px;
+}
+
+body > * {
+  grid-column: span 2;
+}
+
+body > .col {
+  grid-column: span 1;
+}
