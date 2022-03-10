@@ -1,16 +1,18 @@
 {
-  "name": "aufgabe-3",
+  "name": "refetch-interval",
   "version": "1.0.0",
-  "description": "Beste Lösung der Aufgabe ever.",
-  "main": "src/index.js",
-  "scripts": {
-    "start": "nodemon src/index.js"
-  },
+  "main": "index.js",
+  "license": "MIT",
   "dependencies": {
-    "express": "4.17.2"
+    "cookie-parser": "1.4.6",
+    "express": "4.17.3",
+    "random-username-generator": "1.0.4",
+    "uuid": "8.3.2"
+  },
+  "scripts": {
+    "start": "node index.js"
   },
   "devDependencies": {
-    "nodemon": "1.18.4"
-  },
-  "keywords": []
+    "@types/node": "^17.0.21"
+  }
 }

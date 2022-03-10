@@ -15,6 +15,8 @@
       <span><a href="#buch">Buchung</a></span>
     </nav>
 
+    <p id="mostVisited"></p>
+
     <div>
       <h1>Rituale</h1>
       <div id="def">
@@ -69,6 +71,7 @@
               im Monat Ramadan sündenfrei leben und von Sonnenauf- bis untergang
               auf Nahrung verzichten
             </td>
+            <td><button class="like">Like!</button></td>
           </tr>
           <tr>
             <td><a href="./Rituale/LaHuaconada.html">"La Huaconada"</a></td>
@@ -76,6 +79,7 @@
             <td>dem Gott Kon angeboten</td>
             <td>Peitsche und Maske</td>
             <td>Nur von Männer getanzt</td>
+            <td><button class="like">Like!</button></td>
           </tr>
           <tr>
             <td><a href="./Rituale/Taufe.html">Taufe</a></td>
@@ -83,6 +87,7 @@
             <td>Eingliederung in die Gemeinschaft</td>
             <td>Wasser</td>
             <td>Sprechen einer Taufformel</td>
+            <td><button class="like">Like!</button></td>
           </tr>
         </table>
       </div>
@@ -191,10 +196,88 @@
       </form>
     </div>
 
+    <div>
+      <h1>Kommentare</h1>
+      <div>
+        <p>Schreibe einen Kommentar:</p>
+        <input type="text" id="postCommentText"></input>
+        <button id="postCommentButton">Kommentieren</button>
+      </div>
+      <div id="comments"></div>
+    </div>
+
     <footer>
       <span><a href="#nav">Back to top</a></span>
       <span><a href="./others/Impressum.html">Impressum</a></span>
       <span><a href="#">Datenschutzerklärung</a></span>
     </footer>
+
+    <script>
+      fetch("/api/users/@me")
+        .then((response) => response.json())
+        .then((data) => {
+          const mostVisited = document.getElementById("mostVisited");
+          var userData = data
+
+          console.log(userData)
+
+          if (data.mostVisited !== null && data.toString().length > 0) {
+            mostVisited.innerHTML = `Herzlich Willkommen, ${data.name}! <br>
+            Meist besuchte Seite: <a href="${data.mostVisited.site}">${data.mostVisited.site}</a>`;
+          } else {
+            document.getElementById("mostVisited").innerHTML =
+              `Herzlich Willkommen, ${data.name}! Sie haben noch keine meistbesuchte Seite.`;
+          }
+
+          Array.from(document.getElementsByClassName("like")).forEach(button => {
+            button.addEventListener('click', () => {
+              userData.favouriteSites.push(button.parentElement.parentElement.children[0].children[0].href.replace(".html","").replace(/^.*Rituale\//,"").toLowerCase())
+              console.log(userData.favouriteSites)
+              fetch('/api/users/@me', {method: "PATCH", headers: {"Content-Type": "application/json"}, body: JSON.stringify({favouriteSites: userData.favouriteSites})})
+              window.location.reload()
+            })
+
+            if (userData.favouriteSites.includes(button.parentElement.parentElement.children[0].children[0].href.replace(".html","").replace(/^.*Rituale\//,"").toLowerCase())) {
+              button.innerText = 'LIKED!'
+              button.style.backgroundColor = 'green'
+              button.style.color = 'white'
+              button.disabled = true
+            }
+          })
+        })
+      
+      const commentDiv = document.getElementById("comments")
+      fetch("/api/comments", {method: "get"})
+        .then((response) => response.json())
+        .then(commentArray => {
+          commentArray.forEach(comment => {
+            let element = document.createElement("p")
+            let date = new Date(comment.createdAt)
+            fetch(`/api/users/${comment.uid}`)
+              .then(response => response.json())
+              .then(data => {
+                element.innerHTML = `${date.getFullYear()}-${date.getMonth().toString().length === 1 ? '0' + date.getMonth().toString() : date.getMonth()}-${date.getDate().toString().length === 1 ? '0' + date.getDate().toString() : date.getDate()} ${date.getHours()}:${date.getMinutes()} - ${data.name} - "${comment.comment}"`
+                commentDiv.appendChild(element)
+              })
+              .catch(() => {
+                element.innerHTML = `${date.getFullYear()}-${date.getMonth().toString().length === 1 ? '0' + date.getMonth().toString() : date.getMonth()}-${date.getDate().toString().length === 1 ? '0' + date.getDate().toString() : date.getDate()} ${date.getHours()}:${date.getMinutes()} - ??? - "${comment.comment}"`
+              })
+            
+          });
+        })
+
+      const postCommentButton = document.getElementById("postCommentButton")
+      postCommentButton.addEventListener("click", () => {
+        console.log(document.getElementById("postCommentText").value)
+        const data = { comment: document.getElementById("postCommentText").value };
+        fetch("/api/comments", {method: "post", headers: {'Content-Type': 'application/json'}, body: JSON.stringify(data)})
+          .then(response => {
+            if (response.status !== 200) {
+              return alert("Der gesendete Kommentar war leer.")
+            }
+          })
+        window.location.reload()
+      })
+    </script>
   </body>
 </html>

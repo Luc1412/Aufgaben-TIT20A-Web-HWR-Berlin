@@ -9,7 +9,7 @@ COPY package*.json .
 RUN npm install
 
 # Kopiert Files in Workdir
-COPY ./src .
+COPY . .
 
 #Freigeben von Ports
 EXPOSE 8080
