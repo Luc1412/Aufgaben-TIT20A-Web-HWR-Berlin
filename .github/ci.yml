@@ -1,0 +1,21 @@
+name: CI Beispiel
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
+        with:
+          node-version: '14'
+      - run: npm install
+      - run: npm test
+      - uses: docker/build-push-action@v3
+        with:
+          tags: rituale
+
